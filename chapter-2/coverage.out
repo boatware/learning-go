@@ -1,0 +1,7 @@
+mode: set
+chapter-2/main.go:8.13,10.16 2 0
+chapter-2/main.go:14.2,14.21 1 0
+chapter-2/main.go:10.16,11.13 1 0
+chapter-2/main.go:17.44,20.12 2 1
+chapter-2/main.go:24.2,24.19 1 1
+chapter-2/main.go:20.12,22.3 1 1

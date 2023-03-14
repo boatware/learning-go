@@ -1,23 +1,25 @@
 package main
 
 import (
-	"chapter-2/helpers"
+	"errors"
 	"log"
 )
 
-const numPool = 10
+func main() {
+	result, err := divide(10.0, 3.0)
+	if err != nil {
+		panic(err)
+	}
 
-func CalculateValue(intChan chan int) {
-	value := helpers.RandomNumber(numPool)
-	intChan <- value
+	log.Println(result)
 }
 
-func main() {
-	intChan := make(chan int)
-	defer close(intChan)
+func divide(a, b float32) (float32, error) {
+	var result float32
 
-	go CalculateValue(intChan)
+	if b == 0 {
+		return result, errors.New("cannot divide by zero")
+	}
 
-	num := <-intChan
-	log.Println(num)
+	return a / b, nil
 }
