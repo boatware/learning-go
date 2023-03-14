@@ -1,25 +1,18 @@
 package main
 
-import (
-	"log"
-	"time"
-)
+import "log"
 
-type User struct {
-	FirstName   string
-	LastName    string
-	PhoneNumber string
-	Age         int
-	BirthDate   time.Time
+type myStruct struct {
+	FirstName string
+}
+
+func (m *myStruct) printFirstName() string {
+	return m.FirstName
 }
 
 func main() {
-	user := User{
-		FirstName: "John",
-		LastName:  "Doe",
-		Age:       30,
-		BirthDate: time.Date(1990, time.January, 1, 0, 0, 0, 0, time.UTC),
-	}
+	var myVar myStruct
+	myVar.FirstName = "John"
 
-	log.Println(user.FirstName)
+	log.Println(myVar.printFirstName())
 }
