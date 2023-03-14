@@ -1,18 +1,23 @@
 package main
 
-import "log"
+import (
+	"chapter-2/helpers"
+	"log"
+)
 
-type myStruct struct {
-	FirstName string
-}
+const numPool = 10
 
-func (m *myStruct) printFirstName() string {
-	return m.FirstName
+func CalculateValue(intChan chan int) {
+	value := helpers.RandomNumber(numPool)
+	intChan <- value
 }
 
 func main() {
-	var myVar myStruct
-	myVar.FirstName = "John"
+	intChan := make(chan int)
+	defer close(intChan)
 
-	log.Println(myVar.printFirstName())
+	go CalculateValue(intChan)
+
+	num := <-intChan
+	log.Println(num)
 }
