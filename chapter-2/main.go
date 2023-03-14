@@ -1,26 +1,17 @@
-// Package decoration.
-// "main" is the name of the package.
 package main
 
-import "fmt"
+import "log"
 
-// Entry point of the program.
 func main() {
-	fmt.Println("Hello, World!")
+	var myString string
+	myString = "Green"
 
-	var whatToSay string
-	var i int
-
-	whatToSay = "Hello, World!"
-	fmt.Println(whatToSay)
-
-	i = 42
-	fmt.Println("The value of i is", i)
-
-	whatWasSaid, whatElseWasSaid := saySomething()
-	fmt.Println("The function returned", whatWasSaid, "and", whatElseWasSaid)
+	log.Println("myString is set to", myString)
+	changeUsingPointer(&myString)
+	log.Println("myString is set to", myString)
 }
 
-func saySomething() (string, string) {
-	return "Hello, World!", "Bye, World!"
+func changeUsingPointer(s *string) {
+	newValue := "Red"
+	*s = newValue
 }
